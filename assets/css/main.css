@@ -6,4 +6,9 @@
     min-width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
+    padding: 48px 124px;
+}
+
+[contenteditable] {
+    outline: 0px solid transparent;
 }
