@@ -25,6 +25,7 @@
   "dependencies": {
     "@tiptap/pm": "^2.0.4",
     "@tiptap/starter-kit": "^2.0.4",
-    "@tiptap/vue-3": "^2.0.4"
+    "@tiptap/vue-3": "^2.0.4",
+    "openai": "^3.3.0"
   }
 }

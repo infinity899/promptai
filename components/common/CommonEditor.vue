@@ -22,7 +22,7 @@ export default {
     },
   },
 
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "update:modelText"],
 
   data() {
     return {
@@ -62,11 +62,14 @@ export default {
       onUpdate: () => {
         // HTML
         this.$emit("update:modelValue", this.editor.getHTML());
+        this.$emit("update:modelText", this.editor.getText());
 
         // JSON
         // this.$emit('update:modelValue', this.editor.getJSON())
       },
     });
+    this.$emit("update:modelValue", this.editor.getHTML());
+    this.$emit("update:modelText", this.editor.getText());
   },
 
   beforeUnmount() {
@@ -83,7 +86,7 @@ export default {
   padding: 12px;
   border-radius: 12px;
   color: white;
-  background-color: #535151;
+  background-color: #303030;
 }
 .editor-content-container div,
 .editor-content-container {
