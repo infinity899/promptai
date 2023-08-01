@@ -3,44 +3,29 @@
     <div>
       <h3>Prompt</h3>
     </div>
-    <div
-      class="w-1/2 h-64 mx-auto rounded-lg border-solid border-2 border-neutral-800 bg-neutral-700 text-slate-200 p-2"
-      contenteditable="true"
-      @input="onInput"
-    >
-      Change me!
+    <div class="max-w-lg min-h-[500px] w-full">
+      <CommonEditor v-model="content" />
     </div>
   </div>
 </template>
 
 <script setup>
-const onInput = (e) => {
-  const editableDiv = e.target;
+import { watch, ref } from "vue";
+const content = ref(`
+Given the following fruit, output the closest color hex value that matches the color of that fruit.
+<br>
+<p>Fruit:</p>
+<h1>fruit </h1>
+<br>
+Color hex string:
+`);
 
-  // Save the caret position before modification
-  const selection = window.getSelection();
-  const range = selection.getRangeAt(0);
-  const wasCollapsed = range.collapsed;
-
-  // Perform the modification (e.g., replacing patterns with <span> elements)
-  const modifiedString = e.target.innerHTML.replace(
-    /{{\s*(.*?)\s*}}/g,
-    (_, innerString) =>
-      innerString
-        ? `<span class="bg-purple-700 text-white rounded-xl p-2">${innerString}</span`
-        : _,
+watch(content, (newVal) => {
+  content.value = newVal.replace(/{{\s*(.*?)\s*}}/g, (_, innerString) =>
+    innerString
+      ? `<h1 >${innerString}</h1
+         <br>`
+      : _,
   );
-  // Set the modified content back to the editable div
-  editableDiv.innerHTML = modifiedString;
-
-  // Restore the caret position after modification
-  if (wasCollapsed) {
-    const lastChild = editableDiv.lastChild;
-    const newRange = new Range();
-    newRange.setStart(lastChild, lastChild.textContent.length);
-    newRange.collapse(true);
-    selection.removeAllRanges();
-    selection.addRange(newRange);
-  }
-};
+});
 </script>
