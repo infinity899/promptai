@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="preview-container" v-html="parsedText"></div>
-    <button @click="askQuestion">Run</button>
+    <button class="bg-sky-500 p-3 rounded" @click="askQuestion">Run</button>
   </div>
 </template>
 
@@ -53,6 +53,9 @@ const askQuestion = async () => {
     role: "assistant",
     content: "",
   };
+
+  // @TODO if we opt in for direct prompt we won't need to parse streaming chunks
+
   useChatStream({
     stream,
     onChunk: ({ data }) => {

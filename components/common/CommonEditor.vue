@@ -35,8 +35,6 @@ export default {
       // HTML
       const isSame = this.editor.getHTML() === value;
 
-      console.log(value, "value");
-
       // JSON
       // const isSame = JSON.stringify(this.editor.getJSON()) === JSON.stringify(value)
 

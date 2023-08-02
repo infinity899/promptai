@@ -28,7 +28,6 @@ const handleUpdateHTML = (value) => {
 
   const replacedHtml = value.replace(/{{\s*(.*?)\s*}}/g, (_, innerString) => {
     if (innerString) {
-      console.log(innerString);
       savedInnerString = innerString;
       return `<h1>${innerString}</h1><br>`;
     } else {

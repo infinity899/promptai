@@ -9,8 +9,6 @@ const resolveStream = async ({
     const stream = await reader.read();
     if (stream.done) break;
 
-    console.log(stream?.value);
-
     const chunks = stream?.value
       .replaceAll(/^data: /gm, "")
       .split("\n")

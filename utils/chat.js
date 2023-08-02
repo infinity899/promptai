@@ -1,5 +1,4 @@
 export const getAnswer = async ({ messages }) => {
-  console.log("asdadasd", messages);
   const { body } = await fetch("/api/chat", {
     method: "POST",
     body: JSON.stringify({
